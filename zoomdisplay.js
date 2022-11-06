@@ -19,7 +19,7 @@ var L;
                 L.Control.Zoom.prototype.onRemove.call(this, map);
                 map.off('zoomend', this._onUpdate, this);
             }
-            _onUpdate() {
+            _onUpdate(e) {
                 window.setTimeout(() => this._updateDisplay(), 0);
             }
             _updateDisplay() {
@@ -27,6 +27,17 @@ var L;
             }
         }
         Control.ZoomControl = ZoomControl;
+        L.Map.mergeOptions({
+            zoomControl: false,
+            zoomWithLevelControl: true
+        });
+        L.Map.addInitHook(function () {
+            this.options.zoomControl = false;
+            if (this.options.zoomWithLevelControl) {
+                this.zoom = new Control.ZoomControl();
+                this.addControl(this.zoom);
+            }
+        });
     })(Control = L.Control || (L.Control = {}));
 })(L || (L = {}));
 (function (L) {
