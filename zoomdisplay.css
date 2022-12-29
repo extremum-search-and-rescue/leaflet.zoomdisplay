@@ -1,4 +1,4 @@
-﻿.leaflet-control-zoom-display {
+.leaflet-control-zoom-display {
     background-color: #fff;
     width: 26px;
     text-align: center;
@@ -12,4 +12,12 @@
 
 .leaflet-touch .leaflet-control-zoom-display {
     width: 30px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .leaflet-control-zoom-display {
+        border-bottom-color: #444;
+        background-color: #222;
+        color: #fff;
+    }
 }
